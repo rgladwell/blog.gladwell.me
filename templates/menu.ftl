@@ -1,19 +1,14 @@
-	<!-- Fixed navbar -->
-      <div class="navbar navbar-fixed-top">
-        <div class="navbar-inner">
-          <div class="container">
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="/">JBake</a>
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                <li><a href="/${config.feed_file}">Subscribe</a></li>
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div>
-        </div>
-      </div>
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">JBake</a>
+        </div><!-- /.navbar-header -->
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/${config.feed_file}">Subscribe</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </div><!-- /.navbar -->
+    <div class="container">

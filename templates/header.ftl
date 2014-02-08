@@ -7,13 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="keywords" content="">
-    <meta name="generator" content"JBake">
+    <meta name="generator" content="JBake">
 
     <!-- Le styles -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/asciidoctor.css" rel="stylesheet">
     <link href="/css/base.css" rel="stylesheet">
-    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
