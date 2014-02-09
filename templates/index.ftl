@@ -2,9 +2,10 @@
 	
 	<#include "menu.ftl">
 
-	<div class="page-header">
-		<h1>Blog</h1>
+	<div class="jumbotron" id="title-header">
+		<h1>Grey Area</h1>
 	</div>
+
 	<#list posts as post>
   		<#if (post.status == "published")>
   			<a href="${post.uri}"><h1><#escape x as x?xml>${post.title}</#escape></h1></a>

@@ -2,10 +2,11 @@
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#">JBake</a>
+          <a class="navbar-brand" href="/">Blog</a>
         </div><!-- /.navbar-header -->
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
+            <li><a href="http://gladwell.me">About Me</a></li>
             <li><a href="/${config.feed_file}">Subscribe</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->

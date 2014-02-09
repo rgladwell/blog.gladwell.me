@@ -50,3 +50,12 @@ body {
 /*code {
   font-size: 80%;
 }*/
+
+#title-header {
+  background: url('../img/excession.png') no-repeat left center;
+  background-size: 100%;
+}
+
+#title-header > h1 {
+  color: gray;
+}
