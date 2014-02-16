@@ -10,6 +10,8 @@
 
 	<p>${content.body}</p>
 
+   <#include "disqus.ftl">
+
 	<hr>
 	
 <#include "footer.ftl">
