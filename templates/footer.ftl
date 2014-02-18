@@ -14,6 +14,7 @@
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     <script src="/js/run_prettify.js"></script>
+    <#include "analytics.ftl">
     
   </body>
 </html>
