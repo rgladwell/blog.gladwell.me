@@ -36,36 +36,30 @@ That is, a commit should contain differences related to a single reason for chan
 
 I'll demonstrate the rules using this example of a typical, messy feature branch:
 
-```
-* 848289d Added header and navbar
+<pre><code>* 848289d Added header and navbar
 | * c46707b Cleaned up formatting in footer
-| * eaeefce Cleaned un-used imports in shopping class
+| * eaeefce Cleaned unused imports in shopping class
 | * a828f54 Fix: shopping basket was incorrectly summing total
 | * b9e8c83 Fix: HTML error in footer
 | * fc88cd5 Added full shopping basket implementation
-| * e8c9e72 Implemented hand-over to check-out (partially done)
+| * <span class="highlight">e8c9e72</span> Implemented hand-over to check-out (partially done)
 | * 589b2ec Refactored presentation logic
-| * 525abc1 Implemented stick shopping basket (partially done)
+| * <span class="highlight">525abc1</span> Implemented stick shopping basket (partially done)
 | * 743b94f Added unit-tests (failing)
 | * b056f3e Added acceptance tests to verify shopping basket (failing)
 |/  
-* f754527 Added footer
-```
+* f754527 Added footer</pre></code> 
 
 You can see in the example above `525abc1` and `e8c9e72` are **"partial commits"**. Here, the developer started work on the shopping basket but switched tasks or was interrupted. Following the rules we pick the initial commit ([rule 2](#rebase-rule-2)). When then apply [rule 3a](#rebase-rule-3a) to reorder and squash the second, related commit. This creates a single, **"feature commit"** (`81a1dcf`):
 
-We pick the initial commit (rule 2) and reorder and squash the second, related commit together (rule 3a) to create a single, **"feature commit"** (`81a1dcf`):
-
-```
-* 41162a7 Cleaned up formatting in footer
-* 429e311 Cleaned un-used imports in shopping class
+<pre><code>* 41162a7 Cleaned up formatting in footer
+* 429e311 Cleaned unused imports in shopping class
 * 255171b Fix: shopping basket was incorrectly summing total
 * 5758ada Fix: HTML error in footer
-* 81a1dcf Added shopping basket implementation
+* <span class="highlight">81a1dcf</span> Added shopping basket implementation
 * db1d08d Refactored presentation logic
-* 743b94f Added unit-tests (failing)
-* b056f3e Added acceptance tests to verify shopping basket (failing)
-```
+* <span class="highlight">743b94f</span> Added unit-tests (failing)
+* <span class="highlight">b056f3e</span> Added acceptance tests to verify shopping basket (failing)</pre></code>
 
 We can see there are also two **"test commits"** (commits `743b94f` and `b056f3e`). In good TDD fashion, failing tests have been written first. The developer then saved his work and committed the tests before he began on the implementation.
 
@@ -76,14 +70,12 @@ I think it makes sense to squash test commits together with the feature commit b
 
 If we reorder and squash the tests into the feature commit we get `9496bb2`:
 
-```
-* f604b84 Cleaned up formatting in footer
-* c2133d3 Cleaned un-used imports in shopping class
-* 37793c9 Fix: shopping basket was incorrectly summing total
-* 4ba6157 Fix: HTML error in footer
+<pre><code>* <span class="highlight">f604b84</span> Cleaned up formatting in footer
+* <span class="highlight">c2133d3</span> Cleaned unused imports in shopping class
+* <span class="highlight">37793c9</span> Fix: shopping basket was incorrectly summing total
+* <span class="highlight">4ba6157</span> Fix: HTML error in footer
 * 7bd00a3 Refactored presentation logic
-* 9496bb2 Added shopping basket
-```
+* <span class="highlight">9496bb2</code> Added shopping basket</pre></code>
 
 Already much clearer but we're not finished yet.
 
@@ -91,11 +83,9 @@ A decision needs to be made when we look at **"refactor commit"** `7bd00a3`. Thi
 
 This just leaves us with a few **"fix commits"** (`4ba6157`, `37793c9`, `c2133d3` and `f604b84`). We apply [rule 3b](#rebase-rule-3b) above: only `4ba6157` and `f604b84` apply to code outside of the private, feature branch so we leave them. We just fixup the other commits:
 
-```
-* 7cd853a Cleaned up formatting in footer
+<pre><code class="prettyprint">* 7cd853a Cleaned up formatting in footer
 * 899dcd3 Fix: HTML error in footer
 * 79ad9f6 Refactored presentation logic
-* 13b4503 Added shopping basket
-```
+* 13b4503 Added shopping basket</pre></code>
 
 Finally, we're finished and ready to publish our readable, clean feature branch.

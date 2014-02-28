@@ -47,9 +47,9 @@ body {
   margin: 20px 0;
 }
 
-/*code {
-  font-size: 80%;
-}*/
+code > .highlight {
+  color: #C7254E;
+}
 
 #title-header {
   background: url('../img/excession.png') no-repeat left center;
