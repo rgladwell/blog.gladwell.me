@@ -1,17 +1,21 @@
 <#include "header.ftl">
 	
 	<#include "menu.ftl">
-	
-	<div class="page-header">
-		<h1><#escape x as x?xml>${content.title}</#escape></h1>
-	</div>
 
-	<p><em>${content.date?string("dd MMMM yyyy")}</em></p>
+   <div class="row">
+      <div class="col-md-9">
+	      <div class="page-header">
+		      <h1><#escape x as x?xml>${content.title}</#escape></h1>
+	      </div>
 
-	<p>${content.body}</p>
+	      <p><em>${content.date?string("dd MMMM yyyy")}</em></p>
 
-   <#include "disqus.ftl">
+	      <p>${content.body}</p>
 
-	<hr>
+         <#include "disqus.ftl">
+
+	      <hr>
+      </div>
+   </div>
 	
 <#include "footer.ftl">
