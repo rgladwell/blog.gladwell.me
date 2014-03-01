@@ -26,6 +26,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
     <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/${config.feed_file}" />
   </head>
   <body>
     <div id="wrap">
