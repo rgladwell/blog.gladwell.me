@@ -1,0 +1,127 @@
+@import  url(https://fonts.googleapis.com/css?family=Playfair+Display:900);
+@import url(https://fonts.googleapis.com/css?family=Gentium+Basic);
+
+$fa-font-path: "vendor/styles/font-awesome";
+@import "node_modules/font-awesome/scss/font-awesome";
+
+$green: #A6CE39;
+
+// Common Styles
+
+p, ul, ol, blockquote {
+  font-family: 'Gentium Basic', serif;
+}
+
+main {
+  p, ul, ol, blockquote {
+    font-size: 20px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  color: $green;
+}
+
+header h1 {
+  margin-bottom: 0em;
+}
+
+header p {
+  margin-top: 0em;
+}
+
+i {
+  @extend .fa;
+  @extend .fa-fw;
+}
+
+i.github {
+  @extend .fa-github;
+}
+
+i.twitter {
+  @extend .fa-twitter;
+}
+
+blockquote {
+  padding-left: 10px;
+  font-style: italic;
+  border-left: thick solid $green;
+}
+
+// Navigation Styles
+
+body > header > nav {
+  color: white;
+  font-size: 2em;
+  text-align: right;
+}
+
+body > header > nav a {
+  color: white;
+  text-decoration: none;
+}
+
+body > header > nav li {
+  list-style: none;
+  display: inline;
+}
+
+// Header Styles
+
+body > header {
+  background: $green;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+body > header * {
+  color: white;
+}
+
+body > header a {
+  color: white;
+  text-decoration: none;
+}
+
+body > header h1 {
+  text-transform: uppercase;
+  font-size: 3em;
+}
+
+body > header p {
+  font-size: 1.1em;
+}
+
+// Main Styles
+
+main h1 {
+  font-size: 3em;
+}
+
+main header {
+  color: $green;
+  border-bottom: thin solid $green;
+}
+
+main header p {
+  font-size: 100%;
+}
+
+main header a {
+  color: $green;
+  text-decoration: none;
+}
+
+// Footer Styles
+
+body > footer {
+  background: $green;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+body > footer * {
+  color: white;
+}

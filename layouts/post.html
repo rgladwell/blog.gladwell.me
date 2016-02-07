@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grey Area - {{ title }}</title>
+  <link href="/main.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  {{> header}}
+
+  <main>
+    <article>
+      <header>
+        <h1>{{ title }}</h1>
+        <p>Published <time>{{ date }}</time></p>
+      </header>
+
+      {{{ contents  }}}
+
+    </article>
+  </main>
+
+  {{> footer}}
+
+</body>
+</html>

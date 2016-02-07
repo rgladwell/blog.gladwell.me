@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grey Area</title>
+  <link href="main.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  {{> header}}
+
+  <main>
+    {{#if articles }}
+    {{#each articles }}
+    <article>
+      <header>
+        <h1><a href="{{ path }}">{{ title }}</a></h1>
+        <p>Published <time>{{ date }}</time></p>
+      </header>
+      <p>{{ summary }}<p>
+    </article>
+    {{/each}}
+    {{/if}}
+  </main>
+
+  {{> footer}}
+
+</body>
+</html>

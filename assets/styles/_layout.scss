@@ -1,0 +1,35 @@
+@import 'bower_components/skel/dist/skel';
+
+@include skel-layout((
+  reset: "normalize",
+  grid: false,
+  containers: 736px
+));
+
+@include skel-breakpoints((
+    medium: "(max-width: 980px)",
+    small:  "(max-width: 736px)"
+));
+
+.container {
+  @include breakpoint(small) {
+    width: 100%;
+  }
+}
+
+body > header > nav {
+  @include breakpoint(small) {
+    display: none;
+  }
+}
+
+body > header > *, body > footer > * , main {
+  @extend .container;
+}
+
+body > header > * > *, body > footer > *  > *, main > * {
+  @include breakpoint(medium) {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
