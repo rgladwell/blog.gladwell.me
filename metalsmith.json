@@ -21,11 +21,9 @@
     },
     "metalsmith-drafts": {},
     "metalsmith-markdown": {},
-    "metalsmith-permalinks": {
-      "pattern": ":title"
-    },
+    "metalsmith-path": {},
     "metalsmith-collections": {
-       "articles": {
+      "articles": {
         "pattern": "*.md",
         "sortBy": "date"
       }
