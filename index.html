@@ -1,112 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8"/>
-    <title>Grey Area - Ricardo Gladwell's Blog</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Ricardo Gladwell's Blog">
-    <meta name="author" content="Ricardo Gladwell">
-    <meta name="keywords" content="java,android,scala,maven,eclipse,git">
-    <meta name="generator" content="JBake">
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grey Area</title>
+  <link href="main.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
 
-    <!-- Le styles -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="/css/asciidoctor.css" rel="stylesheet">
-    <link href="/css/base.css" rel="stylesheet">
-
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="/js/html5shiv.js"></script>
-    <![endif]-->
-
-    <!-- Fav and touch icons -->
-    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">-->
-    <link rel="shortcut icon" href="/favicon.ico">
-
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed.xml" />
-  </head>
-  <body>
-    <div id="wrap">
-	
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-default" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="/">Blog</a>
-        </div><!-- /.navbar-header -->
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="http://gladwell.me">About Me</a></li>
-            <li><a href="/feed.xml">Subscribe</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </div><!-- /.navbar -->
-    <div class="container">
-	<div class="jumbotron" id="title-header">
-		<h1>Grey Area</h1>
-	</div>
-
-   <div class="row">
-      <div class="col-md-9">
-               <article>
-  			         <a href="/2014/02/anatomy-of-a-rebase.html"><h1>Anatomy of a Rebase</h1></a>
-  			         <p>03 March 2014</p>
-  			         <p><p><small><em>Note:</em> This article assumes you already know about rebasing and how to perform an <a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History">interactive rebase</a>.</small></p><p>One of the most useful features of git is <strong>rebasing</strong> and I've become a big fan of the <a href="http://mettadore.com/analysis/a-simple-git-rebase-workflow-explained/">rebase workflow</a>. But it's still an immature area without a lot of guidance. Typically, developers fall into <a href="http://who-t.blogspot.de/2009/12/on-commit-messages.html">revision history anti-patterns</a> leading to unreadable, messy histories.</p><p>This article describes a set of <strong>rebase rules</strong> that I hope helps improve this situation:</p><h2>Interactive Rebase Rules</h2><p>Group your commits into logical units according to these rules before you publish your feature branch:</p>
-<ol>
-  <li><span id="rebase-rule-1"><a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History#Splitting-a-Commit">Split</a> commits that have more than one reason for change.</span></li>
-  <li><span id="rebase-rule-2"><a href="https://help.github.com/articles/interactive-rebase#pick">Pick</a> commits that introduce a new reason for changing published code.</span></li>
-  <li><span id="rebase-rule-3"><a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History#Reordering-Commits">Reorder</a> related commits that share a reason for change so they are adjacent and then:</span><br/>a. <span id="rebase-rule-3a"><a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History#Squashing-Commits">Squash</a> related commits that add new functionality to unpublished code.</span><br/>b. <span id="rebase-rule-3b"><a href="https://help.github.com/articles/interactive-rebase#fixup">Fixup</a> related commits that fix errors, warnings or style problems in unpublished code.</span></li>
-</ol><p>Following these rules makes the revision history clearer and easier to manage so that even non-techies can read it. It also ensures you don't break your revision history by rebasing commits that have been published.</p><h2>The Single Commit Principal</h2><p>The rules are driven by a sort of <a href="http://c2.com/cgi/wiki?SingleResponsibilityPrinciple">Single Responsibility Principle</a> for commits:</p>
-<blockquote><p>There should only be one logical change per commit.</p>
-</blockquote><p>That is, a commit should contain differences related to a single reason for change. Such as adding new feature, a refactoring or tidying the code.</p><p><strong>See Also:</strong> <a href="https://wiki.openstack.org/wiki/GitCommitMessages#Structural_split_of_changes">Openstack's Git Commit Good Practice</a></p><h2>Example</h2><p>I'll demonstrate the rules using this example of a typical, messy feature branch:</p><p><pre><code>* 848289d Added header and navbar<br/>| * c46707b Cleaned up formatting in footer<br/>| * eaeefce Cleaned unused imports in shopping class<br/>| * a828f54 Fix: shopping basket was incorrectly summing total<br/>| * b9e8c83 Fix: HTML error in footer<br/>| * fc88cd5 Added full shopping basket implementation<br/>| * <span class="highlight">e8c9e72</span> Implemented hand-over to check-out (partially done)<br/>| * 589b2ec Refactored presentation logic<br/>| * <span class="highlight">525abc1</span> Implemented stick shopping basket (partially done)<br/>| * 743b94f Added unit-tests (failing)<br/>| * b056f3e Added acceptance tests to verify shopping basket (failing)<br/>|/<br/>* f754527 Added footer</pre></code> </p><p>You can see in the example above <code>525abc1</code> and <code>e8c9e72</code> are <strong>"partial commits"</strong>. Here, the developer started work on the shopping basket but switched tasks or was interrupted. Following the rules we pick the initial commit (<a href="#rebase-rule-2">rule 2</a>). When then apply <a href="#rebase-rule-3a">rule 3a</a> to reorder and squash the second, related commit. This creates a single, <strong>"feature commit"</strong> (<code>81a1dcf</code>):</p><p><pre><code>* 41162a7 Cleaned up formatting in footer<br/>* 429e311 Cleaned unused imports in shopping class<br/>* 255171b Fix: shopping basket was incorrectly summing total<br/>* 5758ada Fix: HTML error in footer<br/>* <span class="highlight">81a1dcf</span> Added shopping basket implementation<br/>* db1d08d Refactored presentation logic<br/>* <span class="highlight">743b94f</span> Added unit-tests (failing)<br/>* <span class="highlight">b056f3e</span> Added acceptance tests to verify shopping basket (failing)</pre></code></p><p>We can see there are also two <strong>"test commits"</strong> (commits <code>743b94f</code> and <code>b056f3e</code>). In good TDD fashion, failing tests have been written first. The developer then saved his work and committed the tests before he began on the implementation.</p><p>I think it makes sense to squash test commits together with the feature commit because:</p>
-<ol>
-  <li>Tests don't make much sense without their implementations.</li>
-  <li>It ensures every commit in your revision history will pass its tests which makes forensic analysis of bugs easier.</li>
-</ol><p>If we reorder and squash the tests into the feature commit we get <code>9496bb2</code>:</p><p><pre><code>* <span class="highlight">f604b84</span> Cleaned up formatting in footer<br/>* <span class="highlight">c2133d3</span> Cleaned unused imports in shopping class<br/>* <span class="highlight">37793c9</span> Fix: shopping basket was incorrectly summing total<br/>* <span class="highlight">4ba6157</span> Fix: HTML error in footer<br/>* 7bd00a3 Refactored presentation logic<br/>* <span class="highlight">9496bb2</code> Added shopping basket</pre></code></p><p>Already much clearer but we're not finished yet.</p><p>A decision needs to be made when we look at <strong>"refactor commit"</strong> <code>7bd00a3</code>. This refactoring simplifies the HTML in our new shopping basket but also touches published code in the footer. So we leave it where it is as per <a href="#rebase-rule-2">rule 2</a>.</p><p>This just leaves us with a few <strong>"fix commits"</strong> (<code>4ba6157</code>, <code>37793c9</code>, <code>c2133d3</code> and <code>f604b84</code>). We apply <a href="#rebase-rule-3b">rule 3b</a> above: only <code>4ba6157</code> and <code>f604b84</code> apply to code outside of the private, feature branch so we leave them. We just fixup the other commits:</p><p><pre><code class="prettyprint">* 7cd853a Cleaned up formatting in footer<br/>* 899dcd3 Fix: HTML error in footer<br/>* 79ad9f6 Refactored presentation logic<br/>* 13b4503 Added shopping basket</pre></code></p><p>Finally, we're finished and ready to publish our readable, clean feature branch.</p></p>
-               </article>
-      </div>
-      <div class="col-md-3">
-<a class="twitter-timeline" href="https://twitter.com/rgladwell" data-widget-id="434700066301829120" data-chrome="transparent nofooter noborders" data-tweet-limit="10">Tweets by @rgladwell</a>
-
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-      </div>
-   </div>
-	
-	<hr />
-	
-	<p>Older posts are available in the <a href="/archive.html">archive</a>.</p>
-
-		</div>
-		<div id="push"></div>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://twitter.com/rgladwell"><i class="twitter"></i></a></li>
+        <li><a href="https://github.com/rgladwell"><i class="github"></i></a></li>
+      </ul>
+    </nav>
+  
+    <div class="title">
+      <h1><a href="/">Grey Area</a></h1>
+      <p>Ricardo&#x27;s thoughts &amp; feels about tech</p>
     </div>
-    
-    <div id="footer">
-      <div class="container">
-        <p class="muted credit">&copy; Ricardo Gladwell 2014 | Mixed with <a href="http://twitter.github.com/bootstrap/">Bootstrap v3.1.1</a> | Baked with <a href="http://jbake.org">JBake v2.2.1</a> | Decorated with Bootswatch <a href="http://bootswatch.com/cyborg/">Cyborg Theme v3.1.0+1</a></p>
-      </div>
+  </header>
+
+  <main>
+    <article>
+      <header>
+        <h1><a href="anatomy-of-a-rebase">Anatomy of a Rebase</a></h1>
+        <p>Published <time>April 3, 2014</time></p>
+      </header>
+      <p>One of the most useful features of git is rebasing and I&#x27;ve become a big fan of the rebase workflow. But it&#x27;s still an immature area without a lot of guidance. Typically, developers fall into revision history anti-patterns leading to unreadable, messy histories. This article describes a set of rebase rules that I hope helps improve this situation...<p>
+    </article>
+  </main>
+
+  <footer>
+    <div class="copyright">
+      <p>&copy; 2014 - 2016 Ricardo Gladwell</p>
     </div>
-    
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/run_prettify.js"></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <div class="about">
+      <p>Made with love using <a href="https://nodejs.org">Node.js</a>, <a href="http://gruntjs.com">Grunt</a>, <a href="http://metalsmith.io">Metalsmith</a> and <a href="http://skel.io/">Skel</a>. Beautifully displayed with <a href="https://www.google.com/fonts/specimen/Playfair+Display">Playfair Display</a> and <a href="https://www.google.com/fonts/specimen/Gentium+Basic">Gentium Basic</a> fonts.</p>
+    </div>
+  </footer>
 
-  ga('create', 'UA-44148024-2', 'gladwell.me');
-  ga('send', 'pageview');
-
-</script>
-    
-  </body>
+</body>
 </html>

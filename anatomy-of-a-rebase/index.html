@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grey Area - Anatomy of a Rebase</title>
+  <link href="/main.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="https://twitter.com/rgladwell"><i class="twitter"></i></a></li>
+        <li><a href="https://github.com/rgladwell"><i class="github"></i></a></li>
+      </ul>
+    </nav>
+  
+    <div class="title">
+      <h1><a href="/">Grey Area</a></h1>
+      <p>Ricardo&#x27;s thoughts &amp; feels about tech</p>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header>
+        <h1>Anatomy of a Rebase</h1>
+        <p>Published <time>April 3, 2014</time></p>
+      </header>
+
+      <p><em>Note: This article assumes you already know about rebasing and how to perform an <a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History">interactive rebase</a>.</em></p>
+<p>One of the most useful features of git is <strong>rebasing</strong> and I&#39;ve become a big fan of the rebase workflow. But it&#39;s still an immature area without a lot of guidance. Typically, developers fall into <a href="http://who-t.blogspot.de/2009/12/on-commit-messages.html">revision history anti-patterns</a> leading to unreadable, messy histories.</p>
+<p>This article describes a set of <strong>rebase rules</strong> that I hope helps improve this situation:</p>
+<h2 id="interactive-rebase-rules">Interactive Rebase Rules</h2>
+<p>Group your commits into logical units according to these rules before you publish your feature branch:</p>
+<ol>
+<li><span id="rebase-rule-1"><a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History#Splitting-a-Commit">Split</a> commits that have more than one reason for change.</span></li>
+<li><span id="rebase-rule-2"><a href="https://help.github.com/articles/interactive-rebase#pick">Pick</a> commits that introduce a new reason for changing published code.</span></li>
+<li><span id="rebase-rule-3"><a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History#Reordering-Commits">Reorder</a> related commits that share a reason for change so they are adjacent and then:</span><ol>
+<li><span id="rebase-rule-3a"><a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History#Squashing-Commits">Squash</a> related commits that add new functionality to unpublished code.</span></li>
+<li><span id="rebase-rule-3b"><a href="https://help.github.com/articles/interactive-rebase#fixup">Fixup</a> related commits that fix errors, warnings or style problems in unpublished code.</span></li>
+</ol>
+</li>
+</ol>
+<p>Following these rules makes the revision history clearer and easier to manage so that even non-techies can read it. It also ensures you don&#39;t break your revision history by rebasing commits that have been published.</p>
+<h2 id="the-single-commit-principal">The Single Commit Principal</h2>
+<p>The rules are driven by a  sort of <a href="http://c2.com/cgi/wiki?SingleResponsibilityPrinciple">Single Responsibility Principle</a> for commits:</p>
+<blockquote>
+<p>There should only be one logical change per commit.</p>
+</blockquote>
+<p>That is, a commit should contain differences related to a single reason for change. Such as adding new feature, a refactoring or tidying the code.</p>
+<p><strong>See Also:</strong> <a href="https://wiki.openstack.org/wiki/GitCommitMessages#Structural_split_of_changes">Openstack&#39;s Git Commit Good Practice</a></p>
+<h2 id="example">Example</h2>
+<p>I&#39;ll demonstrate the rules using this example of a typical, messy feature branch:</p>
+<pre><code>* 848289d Added header and navbar
+| * c46707b Cleaned up formatting in footer
+| * eaeefce Cleaned unused imports in shopping class
+| * a828f54 Fix: shopping basket was incorrectly summing total
+| * b9e8c83 Fix: HTML error in footer
+| * fc88cd5 Added full shopping basket implementation
+| * e8c9e72 Implemented hand-over to check-out (partially done)
+| * 589b2ec Refactored presentation logic
+| * 525abc1 Implemented stick shopping basket (partially done)
+| * 743b94f Added unit-tests (failing)
+| * b056f3e Added acceptance tests to verify shopping basket (failing)
+|/  
+* f754527 Added footer
+</code></pre><p>You can see in the example above <code>525abc1</code> and <code>e8c9e72</code> are <strong>&quot;partial commits&quot;</strong>. Here, the developer started work on the shopping basket but switched tasks or was interrupted. Following the rules we pick the initial commit (<a href="#rebase-rule-2">rule 2</a>). When then apply <a href="#rebase-rule-3a">rule 3a</a> to reorder and squash the second, related commit. This creates a single, <strong>&quot;feature commit&quot;</strong> (<code>81a1dcf</code>):</p>
+<pre><code>* 41162a7 Cleaned up formatting in footer
+* 429e311 Cleaned unused imports in shopping class
+* 255171b Fix: shopping basket was incorrectly summing total
+* 5758ada Fix: HTML error in footer
+* 81a1dcf Added shopping basket implementation
+* db1d08d Refactored presentation logic
+* 743b94f Added unit-tests (failing)
+* b056f3e Added acceptance tests to verify shopping basket (failing)
+</code></pre><p>We can see there are also two <strong>&quot;test commits&quot;</strong> (commits <code>743b94f</code> and <code>b056f3e</code>). In good TDD fashion, failing tests have been written first. The developer then saved his work and committed the tests before he began on the implementation.</p>
+<p>I think it makes sense to squash test commits together with the feature commit because:</p>
+<ol>
+<li>Tests don&#39;t make much sense without their implementations.</li>
+<li>It ensures every commit in your revision history will pass its tests which makes forensic analysis of bugs easier.</li>
+</ol>
+<p>If we reorder and squash the tests into the feature commit we get <code>9496bb2</code>:</p>
+<pre><code>* f604b84 Cleaned up formatting in footer
+* c2133d3 Cleaned unused imports in shopping class
+* 37793c9 Fix: shopping basket was incorrectly summing total
+* 4ba6157 Fix: HTML error in footer
+* 7bd00a3 Refactored presentation logic
+* 9496bb2 Added shopping basket
+</code></pre><p>Already much clearer but we&#39;re not finished yet.</p>
+<p>A decision needs to be made when we look at <strong>&quot;refactor commit&quot;</strong> <code>7bd00a3</code>. This refactoring simplifies the HTML in our new shopping basket but also touches published code in the footer. So we leave it where it is as per <a href="#rebase-rule-2">rule 2</a>.</p>
+<p>This just leaves us with a few <strong>&quot;fix commits&quot;</strong> (<code>4ba6157</code>, <code>37793c9</code>, <code>c2133d3</code> and <code>f604b84</code>). We apply <a href="#rebase-rule-3b">rule 3b</a> above: only <code>4ba6157</code> and <code>f604b84</code> apply to code outside of the private, feature branch so we leave them. We just fixup the other commits:</p>
+<pre><code>* 7cd853a Cleaned up formatting in footer
+* 899dcd3 Fix: HTML error in footer
+* 79ad9f6 Refactored presentation logic
+</code></pre><p>Finally, we&#39;re finished and ready to publish our readable, clean feature branch.</p>
+
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="copyright">
+      <p>&copy; 2014 - 2016 Ricardo Gladwell</p>
+    </div>
+    <div class="about">
+      <p>Made with love using <a href="https://nodejs.org">Node.js</a>, <a href="http://gruntjs.com">Grunt</a>, <a href="http://metalsmith.io">Metalsmith</a> and <a href="http://skel.io/">Skel</a>. Beautifully displayed with <a href="https://www.google.com/fonts/specimen/Playfair+Display">Playfair Display</a> and <a href="https://www.google.com/fonts/specimen/Gentium+Basic">Gentium Basic</a> fonts.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
