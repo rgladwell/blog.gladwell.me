@@ -1,23 +1,22 @@
 ---
-title: A Warning About Home Technical Tests
-date: 2015-02-17
+title: Say 'No' to Home Technical Tests
+date: 2015-02-21
 collection: articles
-draft: true
 layout: post.html
 summary: At least in London, home technical tests have become a popular way to screen freelance developers. On paper they're great but be cautious about doing them...
 ---
 
-*TL;DR Recruiters often handout technical tests prematurely. Don't complete one before you've had confirmation the employer is actually interested in you. For example, you've already had a phone interview.*
+*TL;DR: Recruiters often handout technical tests prematurely. Don't complete one before you've had confirmation the employer is actually interested in you. For example, you've already had a phone interview.*
 
 At least in London, home technical tests have become a popular way to screen freelance developers. On paper they're great: 
 
-Interviewers hand out a simple programming task for applicants to complete in their own time. Interviewers get an insight into the programming skills of applicants, outside of artificial, interview conditions.
+Interviewers hand out a simple programming task for applicants to complete in their own time. Interviewers get an insight into the programming skills of applicants outside of artificial, interview conditions.
 
 Except, I don't do them anymore (sort of):
 
 In my naive youth I'd spend hours of spare time putting together well-crafted solutions to home technical tests. Faithfully, I'd email it off to the recruiter and then... 
 
-Never hear anything back. Time wasted. Frustration levels: high.
+Never hear back. Time wasted. Frustration levels, high.
 
 (You've probably had similar experiences)
 
@@ -31,10 +30,10 @@ This lie means these recruiters can shove applicants through the process faster,
 
 The solution is simple, though: **refuse**.
 
-Ensure you've had first-hand confirmation an employer is actually interested. Especially if you're applying indirectly through a recruiter. If the recruiter insists you complete a technical test before you speak directly with the employer, don't do the test. 90% of the time you'll never hear back anyway.
+Ensure you've had first-hand confirmation an employer is actually interested. Especially if you're applying indirectly through a recruiter. If the recruiter insists you complete a technical test before you speak directly with the employer, don't do the test. In my experniece, most of the time you'll never hear back anyway.
 
 In other words, ensure employers are prepared to make their own time investment before you invest your own. For example, by talking with you on the phone first.
 
-For employers: Make sure you're looking at CVs before you hand out home technical tests. And please keep tabs on what your recruiters are up to. This sort of thing looks unprofessional. Alternatively, find a way to cutout recruiters and deal direct with candidates.
+For employers: Make sure you're looking at CVs before you hand out home technical tests. And please keep tabs on what your recruiters are up to. This sort of thing looks unprofessional. Or, find a way to cutout recruiters and deal direct with candidates.
 
 For recruiters: Levels of trust are low. Find some way to regulate your industry to stop these kinds of fraudulent practices.
