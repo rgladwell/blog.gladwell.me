@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* Reset */
 @import url(https://fonts.googleapis.com/css?family=Playfair+Display:900);
-@import url(https://fonts.googleapis.com/css?family=Gentium+Basic);
+@import url(https://fonts.googleapis.com/css?family=Merriweather:300,300italic);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -2261,10 +2261,18 @@ td, th {
   content: ""; }
 
 p, ul, ol, blockquote {
-  font-family: 'Gentium Basic', serif; }
+  font-family: 'Merriweather', serif; }
 
-main p, main ul, main ol, main blockquote {
-  font-size: 20px; }
+body > main p, body > main ul, body > main ol, body > main blockquote {
+  font-size: 16px; }
+
+body > main a {
+  color: blue;
+  text-decoration: none; }
+
+body > main a:visited {
+  color: #2562dc;
+  text-decoration: none; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Playfair Display', serif;
@@ -2306,6 +2314,10 @@ body > header a {
   color: white;
   text-decoration: none; }
 
+body > header a:visited {
+  color: white;
+  text-decoration: none; }
+
 body > header h1 {
   text-transform: uppercase;
   font-size: 3em; }
@@ -2313,17 +2325,21 @@ body > header h1 {
 body > header p {
   font-size: 1.1em; }
 
-main h1 {
+body > main h1 {
   font-size: 3em; }
 
-main header {
+body > main header {
   color: #A6CE39;
   border-bottom: thin solid #A6CE39; }
 
-main header p {
+body > main header p {
   font-size: 100%; }
 
-main header a {
+body > main header a {
+  color: #A6CE39;
+  text-decoration: none; }
+
+body > main header a:visited {
   color: #A6CE39;
   text-decoration: none; }
 
