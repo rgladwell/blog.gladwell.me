@@ -1,6 +1,6 @@
 ---
 title: Anatomy of a Rebase
-date: 2014-04-03
+date: 2014-03-04
 collection: articles
 layout: post.html
 summary: One of the most useful features of git is rebasing and I've become a big fan of the rebase workflow. But it's still an immature area without a lot of guidance. Typically, developers fall into revision history anti-patterns leading to unreadable, messy histories. This article describes a set of rebase rules that I hope helps improve this situation...

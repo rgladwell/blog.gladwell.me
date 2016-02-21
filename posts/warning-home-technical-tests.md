@@ -26,11 +26,11 @@ In a perfect world, home technical tests are only given to applicants who have h
 
 In reality, nefarious recruiters get hold of technical tests and prematurely give them to any and all candidates they see. To get them to complete these tests they tell them employers are already interested, even though the employer hasn't seen their CV at all and they may not even be appropriate for the role.
 
-This lie means these recruiters can shove applicants through the process faster, at the expense of desperate or trusting applicants who have little-or-no chance of being successful.
+This lie means recruiters can shove applicants through the process faster, at the expense of desperate or trusting applicants who have little-or-no chance of being successful.
 
-The solution is simple, though: **refuse**.
+The solution is simple, though: *refuse*.
 
-Ensure you've had first-hand confirmation an employer is actually interested. Especially if you're applying indirectly through a recruiter. If the recruiter insists you complete a technical test before you speak directly with the employer, don't do the test. In my experniece, most of the time you'll never hear back anyway.
+Ensure you've had first-hand confirmation an employer is actually interested. Especially if you're applying indirectly through a recruiter. If the recruiter insists you complete a technical test before you speak directly with the employer, don't do the test. In my experience, most of the time you'll never hear back anyway.
 
 In other words, ensure employers are prepared to make their own time investment before you invest your own. For example, by talking with you on the phone first.
 
