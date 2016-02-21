@@ -12,10 +12,21 @@ p, ul, ol, blockquote {
   font-family: 'Gentium Basic', serif;
 }
 
-main {
+body > main {
   p, ul, ol, blockquote {
     font-size: 20px;
   }
+
+  a {
+    color: blue;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: #2562dc;
+    text-decoration: none;
+  }
+
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -85,6 +96,11 @@ body > header a {
   text-decoration: none;
 }
 
+body > header a:visited {
+  color: white;
+  text-decoration: none;
+}
+
 body > header h1 {
   text-transform: uppercase;
   font-size: 3em;
@@ -96,20 +112,25 @@ body > header p {
 
 // Main Styles
 
-main h1 {
+body > main h1 {
   font-size: 3em;
 }
 
-main header {
+body > main header {
   color: $green;
   border-bottom: thin solid $green;
 }
 
-main header p {
+body > main header p {
   font-size: 100%;
 }
 
-main header a {
+body > main header a {
+  color: $green;
+  text-decoration: none;
+}
+
+body > main header a:visited {
   color: $green;
   text-decoration: none;
 }
