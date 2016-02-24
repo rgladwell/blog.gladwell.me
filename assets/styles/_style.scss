@@ -1,5 +1,5 @@
-@import  url(https://fonts.googleapis.com/css?family=Playfair+Display:900);
-@import url(https://fonts.googleapis.com/css?family=Merriweather:300,300italic);
+@import  url("https://fonts.googleapis.com/css?family=Playfair+Display:900");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:300,300italic");
 
 $fa-font-path: "vendor/styles/font-awesome";
 @import "node_modules/font-awesome/scss/font-awesome";
@@ -8,12 +8,18 @@ $green: #A6CE39;
 
 // Common Styles
 
-p, ul, ol, blockquote {
-  font-family: 'Merriweather', serif;
+p,
+ul,
+ol,
+blockquote {
+  font-family: "Merriweather", serif;
 }
 
 body > main {
-  p, ul, ol, blockquote {
+  p,
+  ul,
+  ol,
+  blockquote {
     font-size: 16px;
   }
 
@@ -29,8 +35,13 @@ body > main {
 
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
   color: $green;
 }
 

@@ -1,6 +1,32 @@
 module.exports = function (grunt) {
   'use strict';
 
+  var stylelintConfig = {
+    "rules": {
+      "block-no-empty": true,
+      "color-no-invalid-hex": true,
+      "declaration-colon-space-after": "always",
+      "declaration-colon-space-before": "never",
+      "function-comma-space-after": "always",
+      "function-url-quotes": "double",
+      "media-feature-colon-space-after": "always",
+      "media-feature-colon-space-before": "never",
+      "media-feature-name-no-vendor-prefix": true,
+      "max-empty-lines": 5,
+      "number-leading-zero": "never",
+      "number-no-trailing-zeros": true,
+      "property-no-vendor-prefix": true,
+      "rule-no-duplicate-properties": true,
+      "declaration-block-no-single-line": true,
+      "rule-trailing-semicolon": "always",
+      "selector-list-comma-space-before": "never",
+      "selector-list-comma-newline-after": "always",
+      "selector-no-id": true,
+      "string-quotes": "double",
+      "value-no-vendor-prefix": true
+    }
+  }
+
   grunt.initConfig({
     copy: {
       assets: {
@@ -112,6 +138,17 @@ module.exports = function (grunt) {
           'styles/font-awesome/': 'font-awesome/fonts'
         }
       }
+    },
+
+    postcss: {
+      options: {
+        processors: [
+          require('stylelint')(stylelintConfig)
+        ]
+      },
+      dist: {
+        src: 'assets/styles/*.scss'
+      }
     }
   });
 
@@ -125,8 +162,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-build-control');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-npmcopy');
+  grunt.loadNpmTasks('grunt-postcss');
 
-  grunt.registerTask('default', ['shell:metalsmith', 'copy', 'sass', 'cssmin', 'imagemin', 'npmcopy']);
+  grunt.registerTask('default', ['postcss', 'shell:metalsmith', 'copy', 'sass', 'cssmin', 'imagemin', 'npmcopy']);
   grunt.registerTask('deploy', ['clean', 'default', 'buildcontrol']);
   grunt.registerTask('run', ['default', 'connect', 'watch']);
 };
