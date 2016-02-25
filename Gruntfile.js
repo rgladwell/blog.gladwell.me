@@ -164,7 +164,29 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-npmcopy');
   grunt.loadNpmTasks('grunt-postcss');
 
-  grunt.registerTask('default', ['postcss', 'shell:metalsmith', 'copy', 'sass', 'cssmin', 'imagemin', 'npmcopy']);
+  grunt.task.registerTask('html5-lint', 'Analyse HTML5 for errors and common problems.', function() {
+    var fs = require( 'fs' ),
+        html5Lint = require( 'html5-lint' ),
+        glob = require("glob");
+
+    var done = this.async();
+    var files = glob.sync("dist/*.html");
+
+    grunt.util.async.forEach(files, function(file, cb) {
+      var html = fs.readFileSync(file, 'utf8')
+      html5Lint(html, function(err, results) {
+        results.messages.forEach(function(msg) {
+          grunt.log.error("HTML5 Lint [%s:%s] [%s]: %s", file, msg.lastLine, msg.type, msg.message);
+        });
+        cb(results.messages.length > 0);
+      });
+    }, function(error) {
+      console.log(!error);
+      done(!error);
+    });
+  });
+
+  grunt.registerTask('default', ['postcss', 'shell:metalsmith', 'html5-lint', 'copy', 'sass', 'cssmin', 'imagemin', 'npmcopy']);
   grunt.registerTask('deploy', ['clean', 'default', 'buildcontrol']);
   grunt.registerTask('run', ['default', 'connect', 'watch']);
 };

@@ -12,7 +12,7 @@ One of the most useful features of git is **rebasing** and I've become a big fan
 
 This article describes a set of **rebase rules** that I hope helps improve this situation:
 
-## Interactive Rebase Rules
+### Interactive Rebase Rules
 
 Group your commits into logical units according to these rules before you publish your feature branch:
 
@@ -24,7 +24,7 @@ Group your commits into logical units according to these rules before you publis
 
 Following these rules makes the revision history clearer and easier to manage so that even non-techies can read it. It also ensures you don't break your revision history by rebasing commits that have been published.
 
-## The Single Commit Principal
+### The Single Commit Principal
 
 The rules are driven by a  sort of [Single Responsibility Principle](http://c2.com/cgi/wiki?SingleResponsibilityPrinciple) for commits:
 
@@ -34,7 +34,7 @@ That is, a commit should contain differences related to a single reason for chan
 
 **See Also:** [Openstack's Git Commit Good Practice](https://wiki.openstack.org/wiki/GitCommitMessages#Structural_split_of_changes)
 
-## Example
+### Example
 
 I'll demonstrate the rules using this example of a typical, messy feature branch:
 

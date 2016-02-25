@@ -15,8 +15,8 @@
     {{#each articles }}
     <article>
       <header>
-        <h1><a href="/{{ path }}">{{ title }}</a></h1>
-        <p>Published <time>{{ date }}</time></p>
+        <h2><a href="/{{ path }}">{{ title }}</a></h2>
+        <p>Published <time datetime="{{ moment date utc }}">{{ moment date format="LL" }}</time></p>
       </header>
       <p>{{ summary }}<p>
     </article>

@@ -11,13 +11,8 @@
       "drafts/*",
       "posts/index.md"
     ],
-    "metalsmith-date-formatter": {
-      "dates": [
-        {
-          "key": "date",
-          "format": "LL"
-        }
-      ]
+    "metalsmith-register-helpers": {
+      "directory": "layouts/helpers"
     },
     "metalsmith-drafts": {},
     "metalsmith-markdown": {},
@@ -25,7 +20,8 @@
     "metalsmith-collections": {
       "articles": {
         "pattern": "*.md",
-        "sortBy": "date"
+        "sortBy": "date",
+        "reverse": true
       }
     },
     "metalsmith-layouts": {

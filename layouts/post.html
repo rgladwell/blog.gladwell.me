@@ -13,8 +13,8 @@
   <main>
     <article>
       <header>
-        <h1>{{ title }}</h1>
-        <p>Published <time>{{ date }}</time></p>
+        <h2>{{ title }}</h2>
+        <p>Published <time datetime="{{ moment date utc }}">{{ moment date format="LL" }}</time></p>
       </header>
 
       {{{ contents  }}}
