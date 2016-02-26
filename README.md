@@ -16,7 +16,7 @@ To build execute:
 
 To test:
 
-    $ npm run start
+    $ npm start
 
 And open http://localhost:8000 in your browser.
 
@@ -24,6 +24,6 @@ To clean build:
 
     $ npm run clean
 
-To deploy and run:
+To deploy:
 
     $ npm run deploy
