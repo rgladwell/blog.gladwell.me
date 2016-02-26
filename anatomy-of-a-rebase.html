@@ -10,7 +10,10 @@
 
   <header>
     <nav>
-      <ul>
+      <ul class="links">
+      </ul>
+      <ul class="social">
+        <li><a href="https://gladwell.me"><img src="https://en.gravatar.com/userimage/11387265/f0a3665f65978f2e4ee1480f77db9348.jpg?size=100" alt="About Me"></a></li>
         <li><a href="https://twitter.com/rgladwell"><i class="twitter"></i></a></li>
         <li><a href="https://github.com/rgladwell"><i class="github"></i></a></li>
       </ul>
@@ -25,14 +28,14 @@
   <main>
     <article>
       <header>
-        <h1>Anatomy of a Rebase</h1>
-        <p>Published <time>March 4, 2014</time></p>
+        <h2>Anatomy of a Rebase</h2>
+        <p>Published <time datetime="2014-03-04T00:00:00+00:00">March 4, 2014</time></p>
       </header>
 
       <p><em>Note: This article assumes you already know about rebasing and how to perform an <a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History">interactive rebase</a>.</em></p>
 <p>One of the most useful features of git is <strong>rebasing</strong> and I&#39;ve become a big fan of the rebase workflow. But it&#39;s still an immature area without a lot of guidance. Typically, developers fall into <a href="http://who-t.blogspot.de/2009/12/on-commit-messages.html">revision history anti-patterns</a> leading to unreadable, messy histories.</p>
 <p>This article describes a set of <strong>rebase rules</strong> that I hope helps improve this situation:</p>
-<h2 id="interactive-rebase-rules">Interactive Rebase Rules</h2>
+<h3 id="interactive-rebase-rules">Interactive Rebase Rules</h3>
 <p>Group your commits into logical units according to these rules before you publish your feature branch:</p>
 <ol>
 <li><span id="rebase-rule-1"><a href="http://git-scm.com/book/en/Git-Tools-Rewriting-History#Splitting-a-Commit">Split</a> commits that have more than one reason for change.</span></li>
@@ -44,14 +47,14 @@
 </li>
 </ol>
 <p>Following these rules makes the revision history clearer and easier to manage so that even non-techies can read it. It also ensures you don&#39;t break your revision history by rebasing commits that have been published.</p>
-<h2 id="the-single-commit-principal">The Single Commit Principal</h2>
+<h3 id="the-single-commit-principal">The Single Commit Principal</h3>
 <p>The rules are driven by a  sort of <a href="http://c2.com/cgi/wiki?SingleResponsibilityPrinciple">Single Responsibility Principle</a> for commits:</p>
 <blockquote>
 <p>There should only be one logical change per commit.</p>
 </blockquote>
 <p>That is, a commit should contain differences related to a single reason for change. Such as adding new feature, a refactoring or tidying the code.</p>
 <p><strong>See Also:</strong> <a href="https://wiki.openstack.org/wiki/GitCommitMessages#Structural_split_of_changes">Openstack&#39;s Git Commit Good Practice</a></p>
-<h2 id="example">Example</h2>
+<h3 id="example">Example</h3>
 <p>I&#39;ll demonstrate the rules using this example of a typical, messy feature branch:</p>
 <pre><code>* 848289d Added header and navbar
 | * c46707b Cleaned up formatting in footer

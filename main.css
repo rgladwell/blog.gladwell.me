@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* Reset */
-@import url(https://fonts.googleapis.com/css?family=Playfair+Display:900);
-@import url(https://fonts.googleapis.com/css?family=Merriweather:300,300italic);
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display:900");
+@import url("https://fonts.googleapis.com/css?family=Merriweather:300,300italic");
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -147,37 +147,55 @@ td, th {
   padding: 0; }
 
 /* Containers */
-.container, body > header > *, body > footer > *, main {
+.container, body > header > *,
+body > footer > *,
+main {
   margin-left: auto;
   margin-right: auto; }
 
-.container.\31 25\25		, body > header > .\31 25\25		, body > footer > .\31 25\25		, main.\31 25\25		{
+.container.\31 25\25		, body > header > .\31 25\25		,
+body > footer > .\31 25\25		,
+main.\31 25\25		{
   width: 100%;
   max-width: 920px;
   min-width: 736px; }
 
-.container.\37 5\25			, body > header > .\37 5\25			, body > footer > .\37 5\25			, main.\37 5\25			{
+.container.\37 5\25			, body > header > .\37 5\25			,
+body > footer > .\37 5\25			,
+main.\37 5\25			{
   width: 552px; }
 
-.container.\35 0\25			, body > header > .\35 0\25			, body > footer > .\35 0\25			, main.\35 0\25			{
+.container.\35 0\25			, body > header > .\35 0\25			,
+body > footer > .\35 0\25			,
+main.\35 0\25			{
   width: 368px; }
 
-.container.\32 5\25			, body > header > .\32 5\25			, body > footer > .\32 5\25			, main.\32 5\25			{
+.container.\32 5\25			, body > header > .\32 5\25			,
+body > footer > .\32 5\25			,
+main.\32 5\25			{
   width: 184px; }
 
-.container, body > header > *, body > footer > *, main {
+.container, body > header > *,
+body > footer > *,
+main {
   width: 736px; }
 
 @media screen and (max-width: 736px) {
-  .container, body > header > *, body > footer > *, main {
+  .container, body > header > *,
+  body > footer > *,
+  main {
     width: 100%; } }
 
-@media screen and (max-width: 736px) {
-  body > header > nav {
-    display: none; } }
+body > header > nav {
+  text-align: right; }
+  @media screen and (max-width: 736px) {
+    body > header > nav {
+      display: none; } }
 
 @media screen and (max-width: 980px) {
-  body > header > * > *, body > footer > * > *, main > * {
+  body > header > * > *,
+  body > footer > * > *,
+  main > * {
     margin-left: 20px;
     margin-right: 20px; } }
 
@@ -2260,10 +2278,16 @@ td, th {
 .fa-percent:before {
   content: ""; }
 
-p, ul, ol, blockquote {
-  font-family: 'Merriweather', serif; }
+p,
+ul,
+ol,
+blockquote {
+  font-family: "Merriweather", serif; }
 
-body > main p, body > main ul, body > main ol, body > main blockquote {
+body > main p,
+body > main ul,
+body > main ol,
+body > main blockquote {
   font-size: 16px; }
 
 body > main a {
@@ -2274,15 +2298,26 @@ body > main a:visited {
   color: #2562dc;
   text-decoration: none; }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
   color: #A6CE39; }
 
 header h1 {
   margin-bottom: 0em; }
 
+header h2 {
+  margin-bottom: 0em; }
+
 header p {
   margin-top: 0em; }
+
+i {
+  vertical-align: middle; }
 
 blockquote {
   padding-left: 10px;
@@ -2291,8 +2326,7 @@ blockquote {
 
 body > header > nav {
   color: white;
-  font-size: 2em;
-  text-align: right; }
+  font-size: 2em; }
 
 body > header > nav a {
   color: white;
@@ -2301,6 +2335,17 @@ body > header > nav a {
 body > header > nav li {
   list-style: none;
   display: inline; }
+
+body > header > nav li {
+  list-style: none;
+  display: inline; }
+
+body > header > nav li img {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  vertical-align: middle;
+  margin-right: 5px; }
 
 body > header {
   background: #A6CE39;
@@ -2325,7 +2370,7 @@ body > header h1 {
 body > header p {
   font-size: 1.1em; }
 
-body > main h1 {
+body > main h2 {
   font-size: 3em; }
 
 body > main header {
