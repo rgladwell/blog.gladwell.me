@@ -181,7 +181,6 @@ module.exports = function (grunt) {
         cb(results.messages.length > 0);
       });
     }, function(error) {
-      console.log(!error);
       done(!error);
     });
   });
