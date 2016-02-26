@@ -47,11 +47,11 @@ module.exports = function (grunt) {
       },
       metalsmith: {
         files: ['posts/**', 'layouts/**', "metalsmith.json"],
-        tasks: ['shell:metalsmith']
+        tasks: ['shell:metalsmith', 'html5-lint']
       },
       sass: {
         files: ['assets/styles/**'],
-        tasks: ['sass', 'cssmin']
+        tasks: ['postcss', 'sass', 'cssmin']
       },
       assets: {
         files: ['assets/**', '!assets/styles/**'],
