@@ -21,6 +21,8 @@ body > header > nav {
   @include breakpoint(small) {
     display: none;
   }
+
+  text-align: right;
 }
 
 body > header > *,

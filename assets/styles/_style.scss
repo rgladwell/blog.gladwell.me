@@ -60,6 +60,7 @@ header p {
 i {
   @extend .fa;
   @extend .fa-fw;
+  vertical-align: middle;
 }
 
 i.github {
@@ -81,7 +82,6 @@ blockquote {
 body > header > nav {
   color: white;
   font-size: 2em;
-  text-align: right;
 }
 
 body > header > nav a {
@@ -92,6 +92,19 @@ body > header > nav a {
 body > header > nav li {
   list-style: none;
   display: inline;
+}
+
+body > header > nav li {
+  list-style: none;
+  display: inline;
+} 
+
+body > header > nav li img {
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 // Header Styles
