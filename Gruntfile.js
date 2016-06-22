@@ -129,9 +129,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-build-control');
   grunt.loadNpmTasks('grunt-shell');
   grunt.loadNpmTasks('grunt-npmcopy');
-  grunt.loadNpmTasks('grunt-html5-validate');
 
-  grunt.registerTask('default', ['shell:metalsmith', 'html5validate', 'copy', 'sass', 'cssmin', 'imagemin', 'npmcopy']);
+  grunt.registerTask('default', ['shell:metalsmith', 'copy', 'sass', 'cssmin', 'imagemin', 'npmcopy']);
   grunt.registerTask('deploy', ['clean', 'default', 'buildcontrol']);
   grunt.registerTask('run', ['default', 'connect', 'watch']);
 };
