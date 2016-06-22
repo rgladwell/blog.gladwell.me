@@ -21,7 +21,7 @@ module.exports = function (grunt) {
       },
       metalsmith: {
         files: ['posts/**', 'layouts/**', "metalsmith.json"],
-        tasks: ['shell:metalsmith', 'html5-lint']
+        tasks: ['shell:metalsmith']
       },
       sass: {
         files: ['assets/styles/**'],
