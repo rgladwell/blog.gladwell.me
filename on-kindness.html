@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grey Area - On Kindness</title>
+  <link href="/main.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul class="links">
+      </ul>
+      <ul class="social">
+        <li><a href="https://gladwell.me"><img src="https://en.gravatar.com/userimage/11387265/f0a3665f65978f2e4ee1480f77db9348.jpg?size=100" alt="About Me"></a></li>
+        <li><a href="https://twitter.com/rgladwell"><i class="twitter"></i></a></li>
+        <li><a href="https://github.com/rgladwell"><i class="github"></i></a></li>
+      </ul>
+    </nav>
+  
+    <div class="title">
+      <h1><a href="/">Grey Area</a></h1>
+      <p>Ricardo&#x27;s thoughts &amp; feels about tech</p>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header>
+        <h2>On Kindness</h2>
+        <p>Published <time datetime="2016-06-25T01:00:00+01:00">June 25, 2016</time></p>
+      </header>
+
+      <p>This was just a throw-away tweet I wrote after a particularly frustrating day at the office:</p>
+<p><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Being a good, senior dev is easy:<br><br>1. Don&#39;t tell; ask<br>2. Don&#39;t rewrite; pair and refactor<br>3. Don&#39;t sneer; encourage<br>4. Be kind.</p>&mdash; Ricardo Gladwell (@rgladwell) <a href="https://twitter.com/rgladwell/status/657995795891900416">October 24, 2015</a></blockquote></p>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>It&#39;s probably the most popular thing I&#39;ve ever done. Six months later the activity was only just dying down. And according to Twitter.com it&#39;s now been seen by over half-a-million people.</p>
+<p>Interestingly, while I got a few new followers it didn&#39;t really &#39;move the needle&#39;. Subsequent tweets get about as many &#39;interactions&#39; as any of my old ones did. Ah well.</p>
+<p>But what&#39;s even more interesting is the 70 or so replies. Most were supportive. A lot of people pointed out that my points applied more generally, though it&#39;s telling they need to be said about developers. A small number were extremely hostile. Predictably, all of these were from very shouty, straight, white, male developers, 25 years-or-older. These seemed oblivious to the fact they were simply confirming my thesis.</p>
+<p>The rest questioned some of the assumptions in the tweet. I felt a lot of these though misunderstood what I was trying to saying. 140 characters doesn&#39;t really allow you to explore nuance so I wanted to use this blog post to drill into each point and expand on it:</p>
+<h3 id="1-don-t-tell-ask">1. Don&#39;t tell; ask</h3>
+<p>Telling here implies authority. And authority lies about a fundamental truth: development practices are still largely immature, subjective and contextual. </p>
+<p>Instead of saying &quot;this is how you do it&quot;, try asking someone &quot;how do you think this should work?&quot; It&#39;s a humbling practice that often leads to productive discussion and better technical solutions. Asking points people in the right direction without discouraging them from exploring their own solutions.</p>
+<h3 id="2-don-t-rewrite-pair-and-refactor">2. Don&#39;t rewrite; pair and refactor</h3>
+<p>Basically, if someone is writing code you don&#39;t like don&#39;t just route around them and do a full rewrite.</p>
+<p>Firstly, this approach is dangerous: what looks like &quot;bad code&quot; may actually be useful and necessary workarounds for problems that aren&#39;t immediately obvious by just reading the code. In other words, you may not be as aware of the domain as you think you are.</p>
+<p>Instead of rewriting problem code make a couple of incremental re-factorings to <em>demonstrate</em> how you think things could be improved and then <em>discuss</em> them in code review, Preferably involving the person who wrote the original code.</p>
+<p>Standard stuff these days.</p>
+<p>Secondly, you&#39;re losing a valuable teaching opportunity. If the code quality of a particular individual continues to be a problem its better to sit down and pair with them so that you can work out style differences collaboratively.</p>
+<p><em>Addendum I:</em> The <a href="http://blog.codinghorror.com/the-ten-commandments-of-egoless-programming/">Egoless Programming</a> manifesto (which I largely agree with) tells us &quot;You are not your code&quot; and that you shouldn&#39;t take criticism personally. I think this particular point is naive: good developers take pride in their code. So we should cautiously and constructively criticise others work, while remembering to also focus on what we like about it (something we often forget).</p>
+<p><em>Addendum II:</em> A lot of people thought this was an argument in favour of extreme programming and pairing. It&#39;s not specifically about those techniques so much as about building code collaboratively.</p>
+<h3 id="3-don-t-sneer-encourage">3. Don&#39;t sneer; encourage</h3>
+<p>It seems to me our industry is full of contempt and intolerance for different practices. This goes from code review microaggressions to viral blog posts like &#39;X is Considered Harmful&#39; and &#39;Y is Broken&#39;. Again, these tell a lie about the maturity and objectivity of our practices.</p>
+<p>But this is really just a reiteration of the last point...</p>
+<h3 id="4-be-kind">4. Be kind</h3>
+<p>This one seemed to evoke the harshest reaction but is, in my mind, clearly the least controversial. Response ranged from the openly hostile (&quot;shut up&quot;) to the most common complaint: it&#39;s too hard! I don&#39;t really know what else to add. If basic respect for your fellow humans is too &quot;hard&quot; for you then you&#39;re probably part of the problem.</p>
+
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="copyright">
+      <p>&copy; 2014 - 2016 Ricardo Gladwell</p>
+    </div>
+    <div class="about">
+      <p>Made with love using <a href="https://nodejs.org">Node.js</a>, <a href="http://gruntjs.com">Grunt</a>, <a href="http://metalsmith.io">Metalsmith</a> and <a href="http://skel.io/">Skel</a>. Beautifully displayed with <a href="https://www.google.com/fonts/specimen/Playfair+Display">Playfair Display</a> and <a href="https://www.google.com/fonts/specimen/Merriweather">Merriweather</a> fonts.</p>
+    </div>
+  </footer>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-44148024-2', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+
+</body>
+</html>
