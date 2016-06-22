@@ -8,15 +8,14 @@
   },
   "plugins": {
     "metalsmith-ignore": [
-      "drafts/*",
       "posts/index.md"
     ],
     "metalsmith-register-helpers": {
       "directory": "layouts/helpers"
     },
-    "metalsmith-drafts": {},
     "metalsmith-markdown": {},
     "metalsmith-path": {},
+    "metalsmith-publish": {},
     "metalsmith-collections": {
       "articles": {
         "pattern": "*.md",

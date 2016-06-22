@@ -32,11 +32,11 @@
     "helper-moment": "0.1.0",
     "metalsmith": "^2.1.0",
     "metalsmith-collections": "^0.7.0",
-    "metalsmith-drafts": "0.0.1",
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.6.4",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-path": "^0.2.0",
+    "metalsmith-publish": "^0.1.4",
     "metalsmith-register-helpers": "^0.1.2"
   },
   "scripts": {
