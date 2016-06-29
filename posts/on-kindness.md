@@ -12,7 +12,7 @@ This was just a throw-away tweet I wrote after a particularly frustrating day at
 
 It's probably the most popular thing I've ever done. Six months later and activity is only just dying down. According to Twitter.com it's now been seen by over half-a-million people!
 
-Interestingly, while I got a few new followers it didn't really 'move the needle'. Subsequent tweets get about as many 'interactions' as any of my old ones did. Ah well.
+Interestingly, while I got some followers it didn't really 'move the needle'. Subsequent tweets get about as many 'interactions' as any of my old ones did. Ah well.
 
 But what's even more interesting is the 70 or so replies. Most were supportive. A lot of people pointed out that my points applied more generally, though it's telling they need to be said about developers. A small number were extremely hostile. Predictably, all of these were from straight, white, male developers, ages 25 years-or-older. These seemed oblivious to the fact they were confirming my premise.
 
