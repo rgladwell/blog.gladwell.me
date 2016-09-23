@@ -13,6 +13,7 @@
     "metalsmith-register-helpers": {
       "directory": "layouts/helpers"
     },
+    "metalsmith-metallic": true,
     "metalsmith-markdown": {},
     "metalsmith-path": {},
     "metalsmith-publish": {},

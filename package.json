@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "bower": "^1.7.7",
+    "highlight.js": "^9.7.0",
     "grunt": "^1.0.1",
     "grunt-build-control": "^0.7.0",
     "grunt-cli": "^1.2.0",
@@ -34,6 +35,7 @@
     "metalsmith-ignore": "^0.1.2",
     "metalsmith-layouts": "^1.6.4",
     "metalsmith-markdown": "^0.2.1",
+    "metalsmith-metallic": "^1.0.0",
     "metalsmith-path": "^0.2.0",
     "metalsmith-publish": "^0.1.4",
     "metalsmith-register-helpers": "^0.1.2"
