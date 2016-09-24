@@ -2,6 +2,7 @@
 /* Reset */
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:900");
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300,300italic");
+@import url(/node_modules/highlight.js/styles/github-gist.css);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -198,6 +199,9 @@ body > header > nav {
   main > * {
     margin-left: 20px;
     margin-right: 20px; } }
+
+main {
+  margin-bottom: 3em; }
 
 /*!
  *  Font Awesome 4.6.3 by @davegandy - http://fontawesome.io - @fontawesome
