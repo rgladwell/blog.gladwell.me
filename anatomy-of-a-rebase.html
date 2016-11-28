@@ -56,29 +56,29 @@
 <p><strong>See Also:</strong> <a href="https://wiki.openstack.org/wiki/GitCommitMessages#Structural_split_of_changes">Openstack&#39;s Git Commit Good Practice</a></p>
 <h3 id="example">Example</h3>
 <p>I&#39;ll demonstrate the rules using this example of a typical, messy feature branch:</p>
-<pre><code class="hljs"><span class="hljs-keyword">*</span> 848289d Added header and navbar
-|<span class="hljs-string"> * c46707b Cleaned up formatting in footer
-</span>|<span class="hljs-string"> * eaeefce Cleaned unused imports in shopping class
-</span>|<span class="hljs-string"> * a828f54 Fix: shopping basket was incorrectly summing total
-</span>|<span class="hljs-string"> * b9e8c83 Fix: HTML error in footer
-</span>|<span class="hljs-string"> * fc88cd5 Added full shopping basket implementation
-</span>|<span class="hljs-string"> * e8c9e72 Implemented hand-over to check-out (partially done)
-</span>|<span class="hljs-string"> * 589b2ec Refactored presentation logic
-</span>|<span class="hljs-string"> * 525abc1 Implemented stick shopping basket (partially done)
-</span>|<span class="hljs-string"> * 743b94f Added unit-tests (failing)
-</span>|<span class="hljs-string"> * b056f3e Added acceptance tests to verify shopping basket (failing)
-</span>|<span class="hljs-string">/  
-* f754527 Added footer</span></code></pre>
+<pre><code class="hljs">* <span class="hljs-number">848289</span>d Added header and navbar
+| <span class="hljs-type">* c46707b</span> Cleaned up formatting <span class="hljs-built_in">in</span> footer
+| <span class="hljs-type">* eaeefce</span> Cleaned unused imports <span class="hljs-built_in">in</span> shopping class
+| <span class="hljs-type">* a828f54</span> Fix: shopping basket was incorrectly summing total
+| <span class="hljs-type">* b9e8c83</span> Fix: HTML error <span class="hljs-built_in">in</span> footer
+| <span class="hljs-type">* fc88cd5</span> Added full shopping basket implementation
+| <span class="hljs-type">* e8c9e72</span> Implemented hand-over to check-out (partially done)
+| <span class="hljs-type">* 589b2ec</span> Refactored presentation logic
+| <span class="hljs-type">* 525abc1</span> Implemented stick shopping basket (partially done)
+| <span class="hljs-type">* 743b94f</span> Added unit-tests (failing)
+| <span class="hljs-type">* b056f3e</span> Added acceptance tests to verify shopping basket (failing)
+|<span class="hljs-type">/  
+* f754527</span> Added footer</code></pre>
 
 <p>You can see in the example above <code>525abc1</code> and <code>e8c9e72</code> are <strong>&quot;partial commits&quot;</strong>. Here, the developer started work on the shopping basket but switched tasks or was interrupted. Following the rules we pick the initial commit (<a href="#rebase-rule-2">rule 2</a>). When then apply <a href="#rebase-rule-3a">rule 3a</a> to reorder and squash the second, related commit. This creates a single, <strong>&quot;feature commit&quot;</strong> (<code>81a1dcf</code>):</p>
-<pre><code class="hljs"><span class="hljs-bullet">* </span>41162a7 Cleaned up formatting in footer
-<span class="hljs-bullet">* </span>429e311 Cleaned unused imports in shopping class
-<span class="hljs-bullet">* </span>255171b Fix: shopping basket was incorrectly summing total
-<span class="hljs-bullet">* </span>5758ada Fix: HTML error in footer
-<span class="hljs-bullet">* </span>81a1dcf Added shopping basket implementation
-<span class="hljs-bullet">* </span>db1d08d Refactored presentation logic
-<span class="hljs-bullet">* </span>743b94f Added unit-tests (failing)
-<span class="hljs-bullet">* </span>b056f3e Added acceptance tests to verify shopping basket (failing)</code></pre>
+<pre><code class="hljs">* <span class="hljs-number">41162</span><span class="hljs-built_in">a7</span> Cleaned up formatting in footer
+* <span class="hljs-number">429</span>e311 Cleaned unused imports in <span class="hljs-keyword">shopping </span>class
+* <span class="hljs-number">255171</span>b Fix: <span class="hljs-keyword">shopping </span><span class="hljs-keyword">basket </span>was incorrectly summing total
+* <span class="hljs-number">5758</span>ada Fix: HTML error in footer
+* <span class="hljs-number">81</span>a1dcf <span class="hljs-keyword">Added </span><span class="hljs-keyword">shopping </span><span class="hljs-keyword">basket </span>implementation
+* db1d08d Refactored presentation logic
+* <span class="hljs-number">743</span>b<span class="hljs-number">94f</span> <span class="hljs-keyword">Added </span>unit-tests (failing)
+* <span class="hljs-keyword">b056f3e </span><span class="hljs-keyword">Added </span>acceptance tests to verify <span class="hljs-keyword">shopping </span><span class="hljs-keyword">basket </span>(failing)</code></pre>
 
 <p>We can see there are also two <strong>&quot;test commits&quot;</strong> (commits <code>743b94f</code> and <code>b056f3e</code>). In good TDD fashion, failing tests have been written first. The developer then saved his work and committed the tests before he began on the implementation.</p>
 <p>I think it makes sense to squash test commits together with the feature commit because:</p>

@@ -1,0 +1,264 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grey Area - HTML for Microservices</title>
+  <link href="/main.min.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+
+  <header>
+    <nav>
+      <ul class="links">
+      </ul>
+      <ul class="social">
+        <li><a href="https://gladwell.me"><img src="https://en.gravatar.com/userimage/11387265/f0a3665f65978f2e4ee1480f77db9348.jpg?size=100" alt="About Me"></a></li>
+        <li><a href="https://twitter.com/rgladwell"><i class="twitter"></i></a></li>
+        <li><a href="https://github.com/rgladwell"><i class="github"></i></a></li>
+      </ul>
+    </nav>
+  
+    <div class="title">
+      <h1><a href="/">Grey Area</a></h1>
+      <p>Ricardo&#x27;s thoughts &amp; feels about tech</p>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header>
+        <h2>HTML for Microservices</h2>
+        <p>Published <time datetime="2016-11-29T00:00:00+00:00">November 29, 2016</time></p>
+      </header>
+
+      <p><strong>TL;DR:</strong> Frustrated with JSON microservices I explore HTML5 as a viable, alternative exchange format. This can encourage good practises, reduce code complexity and turn inaccessible APIs into general-purpose tools anyone in your organisation can use. While HTML is seen as verbose compared with JSON, I also explore modern techniques to reduce markup.</p>
+<p>Let me start by noting a couple of frustrations with JSON RESTful APIs:</p>
+<ol>
+<li><p><strong>Requires tooling.</strong> You might be able to read JSON APIs with a browser, but state changes requires special tools or complicated shell commands. This gets annoying when you want to do something quick like testing your API.</p>
+</li>
+<li><p><strong>Not hypermedia-ready.</strong> There are many hypermedia formats for JSON, but lack of built-in support appears to discourage adoption.</p>
+</li>
+</ol>
+<p>On the other hand, HTML is hypermedia-ready and comes with sophisticated, user friendly, ubiquitous, free tooling that handles complex state changes: the humble web browser!</p>
+<p><strong>Note:</strong> This article doesn&#39;t discuss the benefits of Hypermedia APIs. Many, many others argue in favour of hypermedia more eloquently than I could. See the <a href="#further-reading">Further Reading</a> section for more info.</p>
+<h3 id="html-microservices">HTML Microservices</h3>
+<p><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Learn HTML. Everything else is an enhancement.</p>&mdash; Ian Devlin (@iandevlin) <a href="https://twitter.com/iandevlin/status/783406424999227392">October 4, 2016</a></blockquote></p>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+<p>Unlike JSON microservices, HTML microservices are machine-readable <em>and</em> human-readable. They layer human-readable content with structured, machine-readable data using standards like <a href="https://html.spec.whatwg.org/multipage/microdata.html">microdata</a>.</p>
+<p>Familiar HTML elements like <code>FORM</code> and <code>BUTTON</code> are used as hypermedia controls. This means users can easily make state changes through the browser, just as they might posting a tweet or making a purchase. With no need for complex command line arguments.</p>
+<p>HTML microservices also have the following benefits:</p>
+<ol>
+<li><p><strong>User-Friendly.</strong> The main benefit is that anyone (not just developers) can consume your HTML microservices, reducing the friction to use and test you APIs by making them accessible through a browser. This has several, obvious benefits in areas like exploratory testing. And probably some non-obvious benefits too.</p>
+</li>
+<li><p><strong>No JSON to HTML conversion.</strong> Most front-end API calls just pull JSON and convert it to HTML. Why not avoid this step, improve page performance and reduce code complexity? HTML microservices returns simple, structured HTML that you can write straight to the DOM. No conversion required.</p>
+</li>
+<li><p><strong>Hypermedia comes as free.</strong> It might actually be harder to write HTML without hypermedia.</p>
+</li>
+<li><p><strong>Encourages semantic practices.</strong> Mixing structured data into HTML encourages your teams to think more semantically. There are several benefits here for accessibility, testing and re-use. I&#39;ve also found this leads to greater decoupling, better graceful degradation and simpler code.</p>
+</li>
+</ol>
+<p>Of course, the traditional argument against using HTML for APIs is verbosity. However, modern HTML5 isn&#39;t like your dad&#39;s XML and I&#39;ll discuss some modern techniques to reduce boilerplate and make HTML a more viable option:</p>
+<h3 id="html5-optional-elements">HTML5 Optional Elements</h3>
+<p>Many of the boilerplate tags in HTML pages are now <a href="https://google.github.io/styleguide/htmlcssguide.xml#Optional_Tags">optional with HTML5</a>. Simply remove these optional elements:</p>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Not recommended --&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Spending money, spending bytes<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Sic.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></code></pre>
+
+<p>Becomes:</p>
+<pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Recommended --&gt;</span>
+<span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Saving money, saving bytes<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Qed.</code></pre>
+
+<h3 id="web-components">Web Components</h3>
+<p><a href="http://webcomponents.org/">Web component frameworks</a> like <a href="https://www.polymer-project.org/1.0/">Polymer</a> are powerful tools for simplifying front-ends. The technology also offers ways to simplify and reduce HTML.</p>
+<p>Information written for humans often contains content like headers and footers that isn&#39;t directly relevant to the main information and gets replicated on other pages.</p>
+<p>For example:</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">id</span>=<span class="hljs-string">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">subtitle</span>&gt;</span>by <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">http://gladwell.me</span>&gt;</span>Ricardo Gladwell<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Sic.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">contact</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">https://twitter.com/rgladwell</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon icon-twitter"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Twitter<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+      &amp;copy; <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">https://gladwell.me</span>&gt;</span>Ricardo Gladwell<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>. All rights reserved.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></code></pre>
+
+<p>Using web components you can refactor out this ancillary content like so:</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">content-wrapper.html</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">import</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">content-wrapper</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Qed.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">content-wrapper</span>&gt;</span></code></pre>
+
+<p>API clients can ignore HTML import directives, instead just focussing on microdata. Browser users get a rich, front-end experience.</p>
+<p>The web components standard can also be used to combine all your asset imports into a single import statement. For example, this:</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">content-wrapper.html</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">import</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">style.min.css</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">stylesheet</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">vendor/script.js</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">content-wrapper</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Sic.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">content-wrapper</span>&gt;</span></code></pre>
+
+<p>Becomes this::</p>
+<pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Example<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">http://assets.example.com/assets.html</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">import</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">content-wrapper</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Qed.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">content-wrapper</span>&gt;</span></code></pre>
+
+<p>Having a dedicated assets server has other benefits, such as for traffic/caching shaping. You can also share assets across microservices to create a consistent look and reduce development time.</p>
+<h3 id="semantic-css">Semantic CSS</h3>
+<p>A lot of modern CSS frameworks, like <a href="http://getbootstrap.com/">Bootstrap</a>, require you to add a bunch of &quot;hieroglyphs&quot; to your HTML: extraneous <code>div</code> elements everywhere, mysterious and obscure class attributes like <code>col-md-4</code> and <code>btn-default</code>. These are only meaningful to front-end developers, are confusing to users and can be a big source of verbosity in your HTML.</p>
+<p>Fortunately, this source of verbosity can be easily mitigated using CSS pre-compilers like SASS or LESS.</p>
+<p>Take the following example of &quot;Bootstrapped&quot; HTML:</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"page-header"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Company Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"lead"</span>&gt;</span>Slogan<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-lg-3"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list-group"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list-group-item"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list-group-item"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/about"</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"list-group-item"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/twitter"</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-lg-9"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Qed.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+
+<p>For example, the <a href="http://sass-lang.com/guide#topic-7"><code>@extend</code> SASS directive</a> can be used to fold the extraneous <code>div.container</code> element into the <code>body</code> tag:</p>
+<pre><code class="hljs css">body { @extend .container; }</code></pre>
+
+<p>This can completely hide the hieroglyphs in existing HTML elements, vastly simplifying the syntax.</p>
+<p>Similarly, When no existing HTML elements seems relevant, obscure CSS classes can be aliased to more semantic names. Additionally, you can write CSS selectors to match microdata, reducing even the need for semantic aliases.</p>
+<p>Put together, this turns the complex HTML example above into the simpler form as follows:</p>
+<pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">header</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Company Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Slogan<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/about"</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/contact"</span>&gt;</span>Contact<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+
+  <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Qed.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></code></pre>
+
+<p><em>Note:</em> this technique may not scale for CSS across a complex web sites. But, if you&#39;re staying true to the “small and simple” microservice maxim, your stylesheets shouldn&#39;t get complex enough for this to be a problem.</p>
+<h3 id="in-action">In Action</h3>
+<p>I developed some of these practices while working on my small, hobby webapp/API: <a href="http://is-hosted-by.com/">is-hosted-by.com</a>. This service allows you to search common cloud providers for an Internet address, domain name or URI to see who hosts it. Please be aware this is a work in progress, and currently only supports AWS, Cloudflare and Digital Ocean hosting providers.</p>
+<p>Please take a look at the code and have a play!</p>
+<p>In the course of developing is-hosted-by.com, I uncovered some possible issues with these techniques:</p>
+<ul>
+<li><p><strong>Web components aren&#39;t supported in all browser.</strong>  While we wait for full, cross-browser support, the Web Components polyfill import is a source of verbosity.</p>
+</li>
+<li><p><strong>No <code>PUT/DELETE/PATCH</code> support for HTML forms.</strong> HTML forms do not support <code>PUT/DELETE/PATCH</code>/etc. requests for state changes. Given the security holes this may open, future HTML specifications may never support this. However, it would be trivial to write a polyfill to patch HTML forms to support all HTTP methods without opening security holes.</p>
+</li>
+<li><p><strong>Front-end design overhead.</strong> The techniques outlined here require front-end expertise in what is a traditionally more back-end domain. Additional front-end training or staff could be required. That said, front-end technology is becoming increasingly advanced in areas of simplicity, accessibility and reusability which may mitigate this.</p>
+</li>
+<li><p><strong>Additional Responsibility.</strong> Microservices are supposed to follow an architectural version of the <a href="https://8thlight.com/blog/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html">Single Responsibility Principle</a>. HTML microservices add an additional responsibility: front-end display. That said, most microservices are already responsible for their own monitoring, transaction handling, etc. so this doesn&#39;t seem onerous, given the benefits.</p>
+</li>
+<li><p><strong>CSRF Vulnerability.</strong> JSON APIs are safe from many security attacks that webapps are vulnerable to, like CSRF. Switching from JSON to HTML opens your APIs up to these attacks. Fallback to webapp security measures like CSRF tokens would be required.</p>
+</li>
+<li><p><strong>Additional Dependency.</strong> Asset servers add a dependency to your microservices. There are mitigations for this, as mentioned above. And, if you design your front-ends to degrade gracefully, this doesn&#39;t need to be a “hard” dependency.</p>
+</li>
+<li><p><strong>Lack of Client Libraries.</strong> Client development maybe harder due to lack of software libraries for hypermedia controls and microdata parsing. I&#39;ve done some work filling in the gaps here <a href="http://rgladwell.github.io/microtesia/latest/api/#microtesia.package">myself</a> but more work is needed.</p>
+</li>
+</ul>
+<p>These offer exciting areas for future investigation and development.</p>
+<h3 id="summary">Summary</h3>
+<p>With modern HTML5 you can reduce your markup so its just contain structured data, plus a few extra bytes for a couple of import statement or two and some human-readable labels. Of course, HTML will never completely match the brevity of JSON.</p>
+<p>However, I&#39;m left cold by arguments for choosing technologies based on small, technical efficiencies. Benefits like marginal reductions in payloads are probably negated by HTTP gzip compression. Trivial improvements like CPU efficiencies always seem taken from the perspective of large scale organisations like Google or Facebook.</p>
+<p>At the smaller scale, human-focused benefits like familiarity, accessibility, maintainability and simplicity (as described above) seem infinitely more valuable.</p>
+<p>I hope you see this too.</p>
+<h4 id="further-reading">Further Reading</h4>
+<ul>
+<li><a href="http://timelessrepo.com/haters-gonna-hateoas">Haters gonna HATEOAS</a></li>
+<li><a href="http://blog.steveklabnik.com/posts/2012-02-27-hypermedia-api-reading-list">Hypermedia API Reading List</a></li>
+<li><a href="https://html.spec.whatwg.org/multipage/microdata.html">Microdata HTML Standard</a></li>
+<li><a href="http://schema.org/">Directory of Microdata Schemas</a></li>
+<li><a href="http://webcomponents.org/">Web Components</a></li>
+<li><a href="https://www.polymer-project.org/1.0/">Polymer</a></li>
+<li><a href="http://getbootstrap.com/">Bootstrap</a></li>
+<li><a href="https://www.sitepoint.com/sass-semantically-extend-bootstrap/">Using Sass To Semantically @extend Bootstrap</a></li>
+<li><a href="https://coderwall.com/p/wixovg/bootstrap-without-all-the-debt">Bootstrap without all the debt</a></li>
+<li><a href="https://kangax.github.io/html-minifier/">HTML Minifier</a></li>
+<li><a href="https://8thlight.com/blog/uncle-bob/2014/05/08/SingleReponsibilityPrinciple.html">Single Responsibility Principle</a></li>
+</ul>
+
+
+    </article>
+  </main>
+
+  <footer>
+    <div class="copyright">
+      <p>&copy; 2014 - 2016 Ricardo Gladwell</p>
+    </div>
+    <div class="about">
+      <p>Made with love using <a href="https://nodejs.org">Node.js</a>, <a href="http://gruntjs.com">Grunt</a>, <a href="http://metalsmith.io">Metalsmith</a> and <a href="http://skel.io/">Skel</a>. Beautifully displayed with <a href="https://www.google.com/fonts/specimen/Playfair+Display">Playfair Display</a> and <a href="https://www.google.com/fonts/specimen/Merriweather">Merriweather</a> fonts.</p>
+    </div>
+  </footer>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  
+    ga('create', 'UA-44148024-2', 'auto');
+    ga('send', 'pageview');
+  
+  </script>
+
+</body>
+</html>
