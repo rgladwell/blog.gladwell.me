@@ -1,10 +1,9 @@
 ---
 title: HTML for Microservices
-date: 2016-11-29
+date: 2016-12-01
 collection: articles
 layout: post.html
 summary: Frustrated with JSON microservices I explore HTML5 as a viable, alternative exchange format. This can encourage good practises, reduce code complexity and turn inaccessible APIs into general-purpose tools anyone in your organisation can use. While HTML is seen as verbose compared with JSON, I also explore modern techniques to reduce markup...
-publish: unlisted
 ---
 
 **TL;DR:** Frustrated with JSON microservices I explore HTML5 as a viable, alternative exchange format. This can encourage good practises, reduce code complexity and turn inaccessible APIs into general-purpose tools anyone in your organisation can use. While HTML is seen as verbose compared with JSON, I also explore modern techniques to reduce markup.
