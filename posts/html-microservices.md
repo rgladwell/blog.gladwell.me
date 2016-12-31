@@ -250,6 +250,7 @@ I hope you see this too.
 
 #### Further Reading
 
+ * [Building Hypermedia APIs with HTML](https://www.infoq.com/presentations/web-api-html)
  * [Haters gonna HATEOAS](http://timelessrepo.com/haters-gonna-hateoas)
  * [Hypermedia API Reading List](http://blog.steveklabnik.com/posts/2012-02-27-hypermedia-api-reading-list)
  * [Microdata HTML Standard](https://html.spec.whatwg.org/multipage/microdata.html)
