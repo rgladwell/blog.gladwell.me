@@ -39,7 +39,8 @@
     "metalsmith-path": "^0.2.0",
     "metalsmith-publish": "^0.1.4",
     "metalsmith-register-helpers": "^0.2.0",
-    "node-sass": "^3.13.0"
+    "node-sass": "^3.13.0",
+    "yarn": "^1.0.2"
   },
   "scripts": {
     "install": "bower install",

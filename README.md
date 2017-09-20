@@ -12,18 +12,18 @@ To set-up your environment execute:
 
 To build execute:
 
-    $ npm run build
+    $ yarn run build
 
 To test:
 
-    $ npm start
+    $ yarn start
 
 And open http://localhost:8000 in your browser.
 
 To clean build:
 
-    $ npm run clean
+    $ yarn run clean
 
 To deploy:
 
-    $ npm run deploy
+    $ yarn run deploy
