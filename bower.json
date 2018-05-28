@@ -11,6 +11,7 @@
     "url": "https://github.com/rgladwell/blog.gladwell.me"
   },
   "dependencies": {
-    "skel": "^3.0.0"
+    "skel": "^3.0.0",
+    "ga-dnt-analytics": "justinribeiro/ga-dnt-analytics#^2.0.1"
   }
 }
