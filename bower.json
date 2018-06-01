@@ -1,6 +1,6 @@
 {
   "name": "grey-area",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Blog of Ricardo Gladwell",
   "author": {
     "name": "Ricardo Gladwell",
@@ -11,7 +11,6 @@
     "url": "https://github.com/rgladwell/blog.gladwell.me"
   },
   "dependencies": {
-    "skel": "^3.0.0",
-    "ga-dnt-analytics": "justinribeiro/ga-dnt-analytics#^2.0.1"
+    "skel": "^3.0.0"
   }
 }
