@@ -1,3 +1,5 @@
+const sass = require('sass');
+
 module.exports = function (grunt) {
   'use strict';
 
@@ -50,7 +52,9 @@ module.exports = function (grunt) {
 
     sass: {
       options: {
-        sourceMap: true
+        implementation: sass,
+        sourceMap: true,
+        quiet: true
       },
       dist: {
         files: {
@@ -136,7 +140,7 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-sass');
+  grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-clean');
