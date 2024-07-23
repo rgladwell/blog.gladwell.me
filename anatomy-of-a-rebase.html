@@ -87,18 +87,18 @@
 <li>It ensures every commit in your revision history will pass its tests which makes forensic analysis of bugs easier.</li>
 </ol>
 <p>If we reorder and squash the tests into the feature commit we get <code>9496bb2</code>:</p>
-<pre><code class="hljs"><span class="hljs-bullet">* </span>f604b84 Cleaned up formatting in footer
-<span class="hljs-bullet">* </span>c2133d3 Cleaned unused imports in shopping class
-<span class="hljs-bullet">* </span>37793c9 Fix: shopping basket was incorrectly summing total
-<span class="hljs-bullet">* </span>4ba6157 Fix: HTML error in footer
-<span class="hljs-bullet">* </span>7bd00a3 Refactored presentation logic
-<span class="hljs-bullet">* </span>9496bb2 Added shopping basket</code></pre>
+<pre><code class="hljs">* f604b84 Cleaned up formatting <span class="hljs-keyword">in</span> footer
+* c2133d3 Cleaned unused imports <span class="hljs-keyword">in</span> shopping <span class="hljs-keyword">class</span>
+* <span class="hljs-symbol">37793c9</span> <span class="hljs-symbol">Fix: <span class="hljs-symbol">shopping</span></span> <span class="hljs-symbol">basket</span> <span class="hljs-symbol">was</span> <span class="hljs-symbol">incorrectly</span> <span class="hljs-symbol">summing</span> <span class="hljs-symbol">total</span>
+* <span class="hljs-symbol">4ba6157</span> <span class="hljs-symbol">Fix: <span class="hljs-symbol">HTML</span></span> <span class="hljs-symbol">error</span> <span class="hljs-symbol">in</span> <span class="hljs-symbol">footer</span>
+* <span class="hljs-symbol">7bd00a3</span> <span class="hljs-symbol">Refactored</span> <span class="hljs-symbol">presentation</span> <span class="hljs-symbol">logic</span>
+* <span class="hljs-symbol">9496bb2</span> <span class="hljs-symbol">Added</span> <span class="hljs-symbol">shopping</span> <span class="hljs-symbol">basket</span></code></pre>
 
 <p>Already much clearer but we&#39;re not finished yet.</p>
 <p>A decision needs to be made when we look at <strong>&quot;refactor commit&quot;</strong> <code>7bd00a3</code>. This refactoring simplifies the HTML in our new shopping basket but also touches published code in the footer. So we leave it where it is as per <a href="#rebase-rule-2">rule 2</a>.</p>
 <p>This just leaves us with a few <strong>&quot;fix commits&quot;</strong> (<code>4ba6157</code>, <code>37793c9</code>, <code>c2133d3</code> and <code>f604b84</code>). We apply <a href="#rebase-rule-3b">rule 3b</a> above: only <code>4ba6157</code> and <code>f604b84</code> apply to code outside of the private, feature branch so we leave them. We just fixup the other commits:</p>
 <pre><code class="hljs">* <span class="hljs-number">7</span>cd853a Cleaned up formatting <span class="hljs-keyword">in</span> footer
-* <span class="hljs-number">899</span>dcd3 Fix: HTML <span class="hljs-keyword">error</span> <span class="hljs-keyword">in</span> footer
+* <span class="hljs-number">899</span>dcd3 Fix: HTML error <span class="hljs-keyword">in</span> footer
 * <span class="hljs-number">79</span>ad9f6 Refactored presentation logic</code></pre>
 
 <p>Finally, we&#39;re finished and ready to publish our readable, clean feature branch.</p>
